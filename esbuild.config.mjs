@@ -1,6 +1,7 @@
 import esbuild from "esbuild";
 import process from "process";
 import builtins from "builtin-modules";
+import { readFileSync } from "fs";
 
 const banner =
 `/*
@@ -11,12 +12,59 @@ if you want to view the source, please visit the github repository of this plugi
 
 const prod = (process.argv[2] === 'production');
 
+// Simple Vue SFC processor for esbuild
+const vuePlugin = {
+	name: 'vue',
+	setup(build) {
+		build.onLoad({ filter: /\.vue$/ }, async (args) => {
+			const source = readFileSync(args.path, 'utf8');
+			
+			// Simple template extraction for basic Vue components
+			const templateMatch = source.match(/<template>([\s\S]*?)<\/template>/);
+			const scriptMatch = source.match(/<script[^>]*>([\s\S]*?)<\/script>/);
+			const styleMatch = source.match(/<style[^>]*>([\s\S]*?)<\/style>/);
+			
+			const template = templateMatch ? templateMatch[1].trim() : '';
+			const script = scriptMatch ? scriptMatch[1].trim() : 'export default {}';
+			const style = styleMatch ? styleMatch[1].trim() : '';
+			
+			// Convert template to render function (basic implementation)
+			const templateCode = template ? `\`${template}\`` : '""';
+			
+			const vueComponent = `
+import { h } from 'vue';
+${script.replace('export default', 'const component =')}
+component.template = ${templateCode};
+if (component.template) {
+	component.render = function() {
+		const div = document.createElement('div');
+		div.innerHTML = component.template;
+		return h('div', { innerHTML: component.template });
+	};
+}
+${style ? `
+const styleEl = document.createElement('style');
+styleEl.textContent = \`${style}\`;
+document.head.appendChild(styleEl);
+` : ''}
+export default component;
+			`;
+			
+			return {
+				contents: vueComponent,
+				loader: 'js',
+			};
+		});
+	},
+};
+
 const context = await esbuild.context({
 	banner: {
 		js: banner,
 	},
 	entryPoints: ['src/main.ts'],
 	bundle: true,
+	plugins: [vuePlugin],
 	external: [
 		'obsidian',
 		'electron',
