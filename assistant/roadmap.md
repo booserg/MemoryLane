@@ -17,7 +17,7 @@
 ## **Step 3: Implement Visual Grid**
 - **Goal:** Create a 3x3 grid UI.
 - **Focus:** Highlight squares dynamically.
-
+- impoving chat: https://chatgpt.com/c/6887b495-22d0-832e-a977-1ca79c7649e3
 ---
 
 ## **Step 4: Add N-Back Logic**
