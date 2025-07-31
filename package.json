@@ -1,22 +1,24 @@
 {
-  "name": "memory-lane-n-back",
-  "version": "0.0.1",
-  "description": "Obsidian plugin boilerplate for MemoryLaneNBack",
-  "author": "Sergey Yevtushik <https://github.com/booserg>",
-  "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w"
-  },
-  "devDependencies": {
-    "rollup": "^3.0.0",
-    "rollup-plugin-copy": "^3.4.0",
-    "rollup-plugin-typescript2": "^0.34.1",
-    "rollup-plugin-vue": "^6.0.0",
-    "@rollup/plugin-node-resolve": "^15.0.0",
-    "@rollup/plugin-commonjs": "^24.0.0",
-    "typescript": "^4.0.0",
-    "@vue/compiler-sfc": "^3.2.0",
-    "vue": "^3.2.0",
-    "obsidian": "*"
-  }
+	"name": "memory-lane-n-back",
+	"version": "1.0.0",
+	"description": "A dual n-back memory training game for Obsidian",
+	"main": "dist/main.js",
+	"scripts": {
+		"dev": "node esbuild.config.mjs",
+		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+		"version": "node version-bump.mjs && git add manifest.json versions.json"
+	},
+	"keywords": [],
+	"author": "Sergey Yevtushik",
+	"license": "MIT",
+	"devDependencies": {
+		"@types/node": "^16.11.6",
+		"@typescript-eslint/eslint-plugin": "5.29.0",
+		"@typescript-eslint/parser": "5.29.0",
+		"builtin-modules": "3.3.0",
+		"esbuild": "0.17.3",
+		"obsidian": "latest",
+		"tslib": "2.4.0",
+		"typescript": "4.7.4"
+	}
 }

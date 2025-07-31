@@ -1,11 +1,10 @@
 {
-  "id": "memory-lane-n-back",
-  "name": "MemoryLaneNBack",
-  "version": "0.0.1",
-  "description": "Obsidian plugin boilerplate for MemoryLaneNBack",
-  "author": "Sergey Yevtushik",
-  "authorUrl": "https://github.com/booserg",
-  "minAppVersion": "0.9.7",
-  "js": "main.js",
-  "css": "styles.css"
+	"id": "memory-lane-n-back",
+	"name": "MemoryLaneNBack",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "A dual n-back memory training game for Obsidian",
+	"author": "Sergey Yevtushik",
+	"authorUrl": "https://github.com/booserg",
+	"isDesktopOnly": false
 }
