@@ -8,32 +8,28 @@ Create a Dual N-Back UI.
 ---
 
 ### **Context**
-On the previous steps, the boilerplate of a new Obsidian plugin with an empty vue.js component was created.  
-Now the component needs to be filled with UI.
+In previous steps, a boilerplate for a new Obsidian plugin with an empty Vue.js component was created.
+Now that component needs its UI implemented.
 
 - **Feature Requirements:**
-  1. The visual part of the component needs to have a grid.
-  1.1. 3x3 grid which stretches all the available width.
-  1.2. The grid should form a square.
-  2. Benith the grid two buttons needs to be placed.
-  2.1. Buttons needs to be aligned on the same horisontal line.
-  2.2. Buttons needs to have margin between each other and also between border of the component.
-  2.3. The left button caption "Position".
-  2.4. The right button caption "Sound".
-  2.5. Click on any of this buttons should log the event in the console.
-  3. The component should supports two themes.
-  3.1. On load the component needs to read the current system theme.
-  3.2. If the current theme is light then background of the grid should be white and grid cells should be separated with black borders.
-  3.3. If the current theme is dark then background of the grid should be black and grid cells should be separated with white borders.
-  3.4. If the current theme is unavailable, then it should be interpreted as the light system theme.
-  3.5. The coloring should be easy to change and should be implemented with tailwind.
-  4. The component should be able to recieve a pair of numbers which are the coordinates of the cell.
-  4.1. The set cell should be marked with a circle filled with the color opposite to the color of the cell background.
-  4.2. All the unset cells needs to be cleared and have no circle.
-  4.3. The method that recieves the pair should recieve only one pair and invalidate any other arguments oprions.
+    1. Grid layout
+        1. Create a 3×3 square grid of size 250×250 px.
+        2. Transparent background.
+        3. 2 px solid black border.
+        4. Center the grid within the plugin pane.
+    2. Action buttons
+        1. Place two buttons directly below the grid, aligned horizontally.
+        2. Fixed margin of 10 px between buttons and between buttons and the grid.
+        3. Left button label: `Position`; right button label: `Sound`.
+        4. On click, log a static message to the console.
+    3. Cell marker API
+        1. Expose a `setCell(row: number, col: number)` method callable from the developer console.
+        2. Mark the specified cell with a black-filled circle and clear any previous marker.
+        3. Overwrite prior calls (only one active marker at a time).
+        4. Log an error to the console on invalid arguments.
 - **Build Setup:**
     - All build artifacts should go into the `dist/` folder.
-    - Configure build for Vue 3 support (ensure dependencies are installed).
+    - Continue using Rollup; configure for Vue 3 support and install any required Rollup plugins.
     - Keep `.gitignore` as before, tracking everything inside the `assistant` folder.
 
 - **Documentation:**
@@ -51,7 +47,7 @@ Now the component needs to be filled with UI.
 
 ### **Execution Requirements**
 Before responding with the final output:
-1. Install all required dependencies (Vue 3, Vite if needed).
+1. Install all required dependencies (Vue 3 and Rollup plugins for Vue).
 2. Run the build process (e.g., `npm run build` or equivalent).
 3. Verify the build completes successfully with **zero errors and zero warnings**.
 4. If issues occur, fix them and repeat steps 1–3 until successful.
