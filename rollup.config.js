@@ -11,11 +11,23 @@ module.exports = {
     format: 'cjs',
     sourcemap: true,
   },
+  external: ['obsidian'],
   plugins: [
-    vue({ css: true, preprocessStyles: true }),
-    typescript({ useTsconfigDeclarationDir: true, clean: true }),
-    nodeResolve(),
+    vue({ 
+      css: false,
+      style: { 
+        postcssOptions: {} 
+      }
+    }),
+    nodeResolve({ 
+      browser: true,
+      preferBuiltins: false 
+    }),
     commonjs(),
+    typescript({ 
+      useTsconfigDeclarationDir: true, 
+      clean: true
+    }),
     copy({ targets: [{ src: ['manifest.json', 'styles.css'], dest: 'dist' }] }),
   ],
 };

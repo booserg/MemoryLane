@@ -1,1 +1,55 @@
 /* You can add your plugin styles here */
+
+/* Dual N-Back Game Styles */
+.dual-n-back-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 250px;
+  height: 250px;
+  border: 2px solid black;
+  background-color: transparent;
+  gap: 0;
+}
+
+.grid-cell {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+}
+
+.grid-cell.marked::after {
+  content: '';
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  border-radius: 50%;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.action-button {
+  padding: 8px 16px;
+  border: 1px solid #888;
+  background-color: #007acc;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.action-button:hover {
+  background-color: #005a99;
+}

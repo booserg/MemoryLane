@@ -16,7 +16,8 @@ Now that component needs its UI implemented.
         1. Create a 3×3 square grid of size 250×250 px.
         2. Transparent background.
         3. 2 px solid black border.
-        4. Center the grid within the plugin pane.
+        4. Each individual cell should have its own border for clear separation.
+        5. Center the grid within the plugin pane.
     2. Action buttons
         1. Place two buttons directly below the grid, aligned horizontally.
         2. Fixed margin of 10 px between buttons and between buttons and the grid.
@@ -24,7 +25,7 @@ Now that component needs its UI implemented.
         4. On click, log a static message to the console.
     3. Cell marker API
         1. Expose a `setCell(row: number, col: number)` method callable from the developer console.
-        2. Mark the specified cell with a black-filled circle and clear any previous marker.
+        2. Mark the specified cell with a black-filled circle of 40px diameter.
         3. Overwrite prior calls (only one active marker at a time).
         4. Log an error to the console on invalid arguments.
 - **Build Setup:**
